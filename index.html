@@ -1,16 +1,49 @@
-
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <title>Переход на Авито...</title>
+
+    <!-- 1. Скрипт, который ждет Метрику и делает редирект -->
     <script>
-        window.location.replace("https://www.avito.ru/sankt-peterburg_pushkin/remont_i_stroitelstvo/ekran_pod_vannu_derevyannyy_zhalyuzi-_vlagostoykiy_8184928123?slocation=653240&context=H4sIAAAAAAAA_wE_AMD_YToyOntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czoxOiJ4IjtzOjE2OiI0eU5IZ3J6dmVQVjlaQ3pIIjt9G2kxgD8AAAA");
+        // Функция для перехода на Авито
+        function redirectToAvito() {
+            window.location.replace("https://www.avito.ru/sankt-peterburg_pushkin/remont_i_stroitelstvo/ekran_pod_vannu_derevyannyy_zhalyuzi-_vlagostoykiy_8184928123?slocation=653240&context=H4sIAAAAAAAA_wE_AMD_YToyOntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czoxOiJ4IjtzOjE2OiI0eU5IZ3J6dmVQVjlaQ3pIIjt9G2kxgD8AAAA");
+        }
+
+        // Слушаем событие успешной загрузки счетчика Яндекс.Метрики
+        // Замените XXXXXXXX на ваш номер счетчика в строке ниже
+        document.addEventListener('yacounter112724399inited', function () {
+            redirectToAvito();
+        });
+
+        // Страховка: если Метрика не загрузилась за 2 секунды (например, у пользователя блокировщик рекламы),
+        // все равно перенаправляем его, чтобы он не завис на белом экране.
+        setTimeout(redirectToAvito, 2000);
     </script>
+
+    <!-- 2. Стандартный код Яндекс.Метрики -->
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();
+       for (var j = 0; j < e.length; j++) {if (e[j].src === r) { return; }}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       // В строке ниже ТАКЖЕ замените XXXXXXXX на ваш номер счетчика
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js?id=112724399", "ym");
+
+       // Инициализация счетчика с параметром triggerEvent
+       ym(112724399, "init", {
+            clickmap:false,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            triggerEvent:true // КРИТИЧЕСКИ ВАЖНО: активирует событие готовности для нашего скрипта выше
+       });
+    </script>
+    <noscript><div><img src="https://yandex.ru" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 </head>
 <body>
-    <p style="text-align: center; margin-top: 50px; font-family: sans-serif;">
-        Перенаправление на Авито... Если ничего не произошло, <a href="https://www.avito.ru/sankt-peterburg_pushkin/remont_i_stroitelstvo/ekran_pod_vannu_derevyannyy_zhalyuzi-_vlagostoykiy_8184928123?slocation=653240&context=H4sIAAAAAAAA_wE_AMD_YToyOntzOjEzOiJsb2NhbFByaW9yaXR5IjtiOjA7czoxOiJ4IjtzOjE2OiI0eU5IZ3J6dmVQVjlaQ3pIIjt9G2kxgD8AAAA=true">нажмите сюда</a>.
+    <p style="text-align: center; margin-top: 50px; font-family: sans-serif; color: #555;">
+        Перенаправление на Авито...
     </p>
 </body>
 </html>
